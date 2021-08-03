@@ -9,15 +9,104 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
+        var temp = "gggg ee gg"
+        temp += "lllll"
+        let tempView = TempView()
+        return VStack {
             Text("Hello, world!")
                 .padding()
                 .font(.largeTitle)
                 .foregroundColor(.orange)
-            Button(action: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Action@*/{}/*@END_MENU_TOKEN@*/) {
-                /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Content@*/Text("Button")/*@END_MENU_TOKEN@*/
+                .onAppear(perform: {
+                    
+                })
+                .onDisappear(perform: {
+                    
+                })
+            Text("Good bye")
+            HStack {
+                Text("aaaaa")
+                    .border(Color.red, width: 2)
+                    .padding(16)
+                Text("bbbbb")
+                    .padding(20)
+                    .border(Color.red, width: 5)
+                VStack {
+                    Text("ccc")
+                    Text("dddd")
+                    Text("eeee") + Text("ffff")
+                    VStack {
+                        Text(temp)
+                            .font(.system(size: 19))
+                    }
+                    TempView()
+                }
+                tempView
+            }
+            Button(action: buttonPressedAction) {
+                Text("click!")
+            }
+            Image("image")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            Button(action: {
+                
+            }, label: {
+                Text("Button!!!!")
+            })
+            MyVStack {
+                Text("T1")
+                Text("T2")
+                HStack {
+                    Text("T3")
+                    Text("T4")
+                }
             }
         }
+    }
+    
+    func buttonPressedAction() {
+        
+    }
+}
+
+struct TempView: View {
+    var body: some View {
+        HStack {
+            Text("aaa")
+            Text("bbb")
+            Text("cccc")
+                .modifier(DefaultTitle())
+            VStack {
+                Text("ddd")
+                Text("eee")
+                Text("fff")
+            }
+        }
+    }
+}
+
+struct DefaultTitle: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .font(.system(size: 13))
+            .shadow(color: .green, radius: 2, x: 2, y: 0.1)
+            .background(Color.yellow)
+            .foregroundColor(.orange)
+    }
+}
+
+struct MyVStack<Content: View>: View {
+    let content: () -> Content
+    init(@ViewBuilder content: @escaping () -> Content) {
+        self.content = content
+    }
+    
+    var body: some View {
+        VStack(alignment: .leading, spacing: 12, content: {
+            content()
+        })
+        .font(.largeTitle)
     }
 }
 
