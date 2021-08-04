@@ -8,16 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var wifiEnabled = true
+    @State private var userName = ""
+    
     var body: some View {
-        GeometryReader { geometry in
-            VStack {
-                Text("Hello world")
-                    .frame(width: geometry.size.width / 2, height: geometry.size.height / 4)
-                
-                Text("Hello world")
-                    .frame(width: geometry.size.width / 2, height: geometry.size.height / 2)
-            }
+        VStack {
+            Toggle(isOn: $wifiEnabled, label: {
+                Text("Enable Wi-Fi")
+            })
+            TextField("Enter user name", text: $userName)
+            Text(userName)
+            WifiImageView(wifiEnabled: $wifiEnabled)
         }
+    }
+}
+
+struct WifiImageView: View {
+    @Binding var wifiEnabled: Bool
+    
+    var body: some View {
+        Image(systemName: wifiEnabled ? "wifi" : "wifi.slash")
     }
 }
 
