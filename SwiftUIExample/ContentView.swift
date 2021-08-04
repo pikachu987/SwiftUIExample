@@ -12,10 +12,16 @@ struct ContentView: View {
         HStack(alignment: .top) {
             Text("Placeholder")
                 .font(.largeTitle)
+                .padding(.top, 14)
+                .border(Color.black)
             Spacer()
             VStack(alignment: .center, spacing: 12) {
                 Text("First")
+                    .padding(10)
+                    .border(Color.black)
                 Text("Second")
+                    .padding()
+                    .border(Color.black)
             }
             Spacer()
         }
