@@ -9,21 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack {
-            Text("Hello World")
-                .font(.title)
-                .frame(width: 100, height: 100, alignment: .center)
-                .border(Color.black)
-            Text("Hello World")
-                .font(.title)
-                .frame(minWidth: 100, maxWidth: 160, minHeight: 100, maxHeight: 140, alignment: .center)
-                .border(Color.black)
-            Text("Hello World")
-                .font(.title)
-                .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity, alignment: .center)
-                .border(Color.black)
+        GeometryReader { geometry in
+            VStack {
+                Text("Hello world")
+                    .frame(width: geometry.size.width / 2, height: geometry.size.height / 4)
+                
+                Text("Hello world")
+                    .frame(width: geometry.size.width / 2, height: geometry.size.height / 2)
+            }
         }
-        .edgesIgnoringSafeArea(.all)
     }
 }
 
