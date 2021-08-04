@@ -9,20 +9,15 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Title")
-            .font(.largeTitle)
-        HStack {
-            Text("One")
-            VStack {
-                Text("Two 1")
-                Text("Two 2")
-                Text("Two 3")
+        HStack(alignment: .top) {
+            Text("Placeholder")
+                .font(.largeTitle)
+            Spacer()
+            VStack(alignment: .center, spacing: 12) {
+                Text("First")
+                Text("Second")
             }
-            VStack {
-                Text("Three 1")
-                Text("Three 2")
-                Text("Three 3")
-            }
+            Spacer()
         }
     }
 }
