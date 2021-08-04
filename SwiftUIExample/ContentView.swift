@@ -9,26 +9,41 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(alignment: .center, spacing: 15) {
-            Text("Result")
-                .font(.title)
-            HStack(alignment: .top) {
-                Text("First")
-                    .font(.headline)
-                Spacer()
-                VStack(alignment: .leading) {
-                    Text("January")
-                    Text("February")
-                    Text("March")
-                }
-                Spacer()
-                VStack(alignment: .leading) {
-                    Text("$10000")
-                    Text("$50")
-                    Text("$12300")
-                }
+        VStack {
+            Group {
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
             }
-            .padding(10)
+            Group {
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
+                Text("Sample")
+            }
+            HStack {
+                Image(systemName: "airplane")
+                    .font(.title3)
+                Text("어디로 이동합니까:")
+                Text("경기도 성남시 분당구")
+                    .layoutPriority(1)
+            }
+            .font(.title)
+            .lineLimit(1)
+            
         }
     }
 }
