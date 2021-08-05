@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        VStack(alignment: .trailing) {
+        HStack(alignment: .lastTextBaseline, spacing: 20) {
             Text("이건 일반 텍스트")
                 .font(.largeTitle)
             Text("이건 아주 긴 텍스트")
