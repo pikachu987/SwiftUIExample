@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E0ED49CE26BBBA9000EBFE73 /* TimerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED49CD26BBBA9000EBFE73 /* TimerData.swift */; };
-		E0ED49D026BBBC0C00EBFE73 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED49CF26BBBC0C00EBFE73 /* SecondView.swift */; };
 		E0F6546726AFD91700BE1FF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6546626AFD91700BE1FF7 /* AppDelegate.swift */; };
 		E0F6546926AFD91700BE1FF7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6546826AFD91700BE1FF7 /* SceneDelegate.swift */; };
 		E0F6546B26AFD91700BE1FF7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6546A26AFD91700BE1FF7 /* ContentView.swift */; };
@@ -18,8 +16,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		E0ED49CD26BBBA9000EBFE73 /* TimerData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerData.swift; sourceTree = "<group>"; };
-		E0ED49CF26BBBC0C00EBFE73 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		E0F6546326AFD91700BE1FF7 /* SwiftUIExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F6546626AFD91700BE1FF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0F6546826AFD91700BE1FF7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,8 +59,6 @@
 				E0F6546626AFD91700BE1FF7 /* AppDelegate.swift */,
 				E0F6546826AFD91700BE1FF7 /* SceneDelegate.swift */,
 				E0F6546A26AFD91700BE1FF7 /* ContentView.swift */,
-				E0ED49CF26BBBC0C00EBFE73 /* SecondView.swift */,
-				E0ED49CD26BBBA9000EBFE73 /* TimerData.swift */,
 				E0F6546C26AFD91B00BE1FF7 /* Assets.xcassets */,
 				E0F6547126AFD91B00BE1FF7 /* LaunchScreen.storyboard */,
 				E0F6547426AFD91B00BE1FF7 /* Info.plist */,
@@ -152,8 +146,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E0F6546726AFD91700BE1FF7 /* AppDelegate.swift in Sources */,
-				E0ED49D026BBBC0C00EBFE73 /* SecondView.swift in Sources */,
-				E0ED49CE26BBBA9000EBFE73 /* TimerData.swift in Sources */,
 				E0F6546926AFD91700BE1FF7 /* SceneDelegate.swift in Sources */,
 				E0F6546B26AFD91700BE1FF7 /* ContentView.swift in Sources */,
 			);

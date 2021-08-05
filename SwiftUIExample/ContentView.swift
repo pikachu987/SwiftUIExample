@@ -8,29 +8,15 @@
 import SwiftUI
 
 struct ContentView: View {
-    @EnvironmentObject var timerData: TimerData
-    
     var body: some View {
-        NavigationView {
-            VStack {
-                Text("Timer count = \(timerData.timeCount)")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding(.bottom, 10)
-                Button(action: resetCount, label: {
-                    Text("Reset Count")
-                })
-                NavigationLink(
-                    destination: SecondView(),
-                    label: {
-                        Text("Next Screen")
-                    })
-            }
+        VStack(alignment: .trailing) {
+            Text("이건 일반 텍스트")
+                .font(.largeTitle)
+            Text("이건 아주 긴 텍스트")
+                .font(.body)
+            Text("이건 짧음")
+                .font(.headline)
         }
-    }
-    
-    func resetCount() {
-        timerData.resetCount()
     }
 }
 
@@ -38,7 +24,6 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             ContentView()
-                .environmentObject(TimerData())
                 .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
                 .previewDisplayName("iPhone 11")
         }
