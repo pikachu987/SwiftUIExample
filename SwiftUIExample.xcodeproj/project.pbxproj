@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E0ED49D426BD16CE00EBFE73 /* CarAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E0ED49D326BD16CE00EBFE73 /* CarAssets.xcassets */; };
+		E0ED49D626BD170500EBFE73 /* carData.json in Resources */ = {isa = PBXBuildFile; fileRef = E0ED49D526BD170500EBFE73 /* carData.json */; };
+		E0ED49D826BD179100EBFE73 /* Car.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED49D726BD179100EBFE73 /* Car.swift */; };
+		E0ED49DA26BD17DC00EBFE73 /* CarData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED49D926BD17DC00EBFE73 /* CarData.swift */; };
+		E0ED49DC26BD18C200EBFE73 /* CarStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0ED49DB26BD18C200EBFE73 /* CarStore.swift */; };
 		E0F6546726AFD91700BE1FF7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6546626AFD91700BE1FF7 /* AppDelegate.swift */; };
 		E0F6546926AFD91700BE1FF7 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6546826AFD91700BE1FF7 /* SceneDelegate.swift */; };
 		E0F6546B26AFD91700BE1FF7 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0F6546A26AFD91700BE1FF7 /* ContentView.swift */; };
@@ -16,6 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E0ED49D326BD16CE00EBFE73 /* CarAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = CarAssets.xcassets; sourceTree = "<group>"; };
+		E0ED49D526BD170500EBFE73 /* carData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = carData.json; sourceTree = "<group>"; };
+		E0ED49D726BD179100EBFE73 /* Car.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Car.swift; sourceTree = "<group>"; };
+		E0ED49D926BD17DC00EBFE73 /* CarData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarData.swift; sourceTree = "<group>"; };
+		E0ED49DB26BD18C200EBFE73 /* CarStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarStore.swift; sourceTree = "<group>"; };
 		E0F6546326AFD91700BE1FF7 /* SwiftUIExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E0F6546626AFD91700BE1FF7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E0F6546826AFD91700BE1FF7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,7 +69,12 @@
 				E0F6546626AFD91700BE1FF7 /* AppDelegate.swift */,
 				E0F6546826AFD91700BE1FF7 /* SceneDelegate.swift */,
 				E0F6546A26AFD91700BE1FF7 /* ContentView.swift */,
+				E0ED49D726BD179100EBFE73 /* Car.swift */,
+				E0ED49D926BD17DC00EBFE73 /* CarData.swift */,
+				E0ED49DB26BD18C200EBFE73 /* CarStore.swift */,
+				E0ED49D526BD170500EBFE73 /* carData.json */,
 				E0F6546C26AFD91B00BE1FF7 /* Assets.xcassets */,
+				E0ED49D326BD16CE00EBFE73 /* CarAssets.xcassets */,
 				E0F6547126AFD91B00BE1FF7 /* LaunchScreen.storyboard */,
 				E0F6547426AFD91B00BE1FF7 /* Info.plist */,
 				E0F6546E26AFD91B00BE1FF7 /* Preview Content */,
@@ -132,9 +147,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0ED49D626BD170500EBFE73 /* carData.json in Resources */,
 				E0F6547326AFD91B00BE1FF7 /* LaunchScreen.storyboard in Resources */,
 				E0F6547026AFD91B00BE1FF7 /* Preview Assets.xcassets in Resources */,
 				E0F6546D26AFD91B00BE1FF7 /* Assets.xcassets in Resources */,
+				E0ED49D426BD16CE00EBFE73 /* CarAssets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +164,9 @@
 			files = (
 				E0F6546726AFD91700BE1FF7 /* AppDelegate.swift in Sources */,
 				E0F6546926AFD91700BE1FF7 /* SceneDelegate.swift in Sources */,
+				E0ED49DA26BD17DC00EBFE73 /* CarData.swift in Sources */,
+				E0ED49D826BD179100EBFE73 /* Car.swift in Sources */,
+				E0ED49DC26BD18C200EBFE73 /* CarStore.swift in Sources */,
 				E0F6546B26AFD91700BE1FF7 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

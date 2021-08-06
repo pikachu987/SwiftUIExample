@@ -7,53 +7,21 @@
 
 import SwiftUI
 
-struct ToDoItem: Identifiable {
-    var id = UUID()
-    var task: String
-    var imageName: String
-}
-
-var listData: [ToDoItem] = [
-    ToDoItem(task: "List Test 1", imageName: "trash.circle.fill"),
-    ToDoItem(task: "List Test 2", imageName: "person.2.fill"),
-    ToDoItem(task: "List Test 3", imageName: "car.fill"),
-]
-
 struct ContentView: View {
-    @State var toggleStatus = true
+    @ObservedObject var carStore: CarStore = CarStore(cars: carData)
     
     var body: some View {
-        NavigationView {
-            List {
-                Section(header: Text("Setting")) {
-                    Toggle(isOn: $toggleStatus, label: {
-                        Text("Allow Notification")
-                    })
-                }
-                Section(header: Text("To Do Task")) {
-                    ForEach(listData) { item in
-                        HStack {
-                            NavigationLink(destination: Text(item.task)) {
-                                Image(systemName: item.imageName)
-                                Text(item.task)
-                            }
-                        }
-                    }
-                    .onDelete(perform: { indexSet in
-                        
-                    })
-                    .onMove(perform: { indices, newOffset in
-                        
-                    })
+        List {
+            ForEach(carStore.cars) { item in
+                HStack {
+                    Image(item.imageName)
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .frame(width: 100, height: 60)
+                    Text(item.name)
                 }
             }
-            .navigationBarTitle(Text("To Do List"))
-            .navigationBarItems(trailing: EditButton())
         }
-    }
-    
-    func addTask() {
-        
     }
 }
 
