@@ -10,11 +10,18 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         List {
-            Text("List Test 1")
-            Text("List Test 2")
-            Text("List Test 3")
-            Text("List Test 4")
-            Text("List Test 5")
+            HStack {
+                Image(systemName: "trash.circle.fill")
+                Text("List Test 1")
+            }
+            HStack {
+                Image(systemName: "person.2.fill")
+                Text("List Test 2")
+            }
+            HStack {
+                Image(systemName: "car.fill")
+                Text("List Test 3")
+            }
         }
     }
 }
