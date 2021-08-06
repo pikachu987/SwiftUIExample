@@ -30,12 +30,7 @@ struct ContentView: View {
                         Text("Allow Notification")
                     })
                 }
-                Section(header: HStack {
-                    Text("To Do Task")
-                    Button("Button") {
-                        
-                    }
-                }, footer: Text("Footer")) {
+                Section(header: Text("To Do Task")) {
                     ForEach(listData) { item in
                         HStack {
                             NavigationLink(destination: Text(item.task)) {
@@ -52,10 +47,8 @@ struct ContentView: View {
                     })
                 }
             }
-            .navigationTitle(Text("To Do List"))
-            .navigationBarItems(trailing: Button(action: addTask, label: {
-                EditButton()
-            }))
+            .navigationBarTitle(Text("To Do List"))
+            .navigationBarItems(trailing: EditButton())
         }
     }
     
