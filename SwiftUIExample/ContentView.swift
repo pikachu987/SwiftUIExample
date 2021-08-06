@@ -44,12 +44,18 @@ struct ContentView: View {
                             }
                         }
                     }
+                    .onDelete(perform: { indexSet in
+                        
+                    })
+                    .onMove(perform: { indices, newOffset in
+                        
+                    })
                 }
             }
             .navigationTitle(Text("To Do List"))
-//            .navigationBarItems(trailing: Button(action: addTask, label: {
-//                Text("Add")
-//            }))
+            .navigationBarItems(trailing: Button(action: addTask, label: {
+                EditButton()
+            }))
         }
     }
     
