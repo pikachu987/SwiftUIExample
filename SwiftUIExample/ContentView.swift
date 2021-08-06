@@ -14,17 +14,24 @@ struct ToDoItem: Identifiable {
 }
 
 var listData: [ToDoItem] = [
-    ToDoItem(task: "List Test 1", imageName: "trash.cirlce.fill"),
+    ToDoItem(task: "List Test 1", imageName: "trash.circle.fill"),
     ToDoItem(task: "List Test 2", imageName: "person.2.fill"),
     ToDoItem(task: "List Test 3", imageName: "car.fill"),
 ]
 
 struct ContentView: View {
+    @State var toggleStatus = true
+    
     var body: some View {
-        List(listData) { item in
-            HStack {
-                Image(systemName: item.imageName)
-                Text(item.task)
+        List {
+            Toggle(isOn: $toggleStatus, label: {
+                Text("Allow Notification")
+            })
+            ForEach(listData) { item in
+                HStack {
+                    Image(systemName: item.imageName)
+                    Text(item.task)
+                }
             }
         }
     }
