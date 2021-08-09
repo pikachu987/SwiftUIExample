@@ -8,32 +8,37 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var foregroundColor: Color = Color.white
-    @State private var backgroundColor: Color = Color.black
     
     var body: some View {
-        Text("Hello World")
-            .font(.largeTitle)
-            .padding()
-            .foregroundColor(foregroundColor)
-            .background(backgroundColor)
-            .contextMenu(ContextMenu(menuItems: {
-                Button(action: {
-                    self.foregroundColor = .black
-                    self.backgroundColor = .white
-                }, label: {
-                    Text("Normal Colors")
-                    Image(systemName: "paintbrush")
-                })
-                
-                Button(action: {
-                    self.foregroundColor = .white
-                    self.backgroundColor = .black
-                }, label: {
-                    Text("Inverted Colors")
-                    Image(systemName: "paintbrush.fill")
-                })
-            }))
+        VStack {
+            Rectangle()
+                .frame(width: 100, height: 100)
+            
+            Circle()
+                .fill(Color.red)
+                .frame(width: 250, height: 100)
+            
+            Capsule()
+                .stroke(lineWidth: 10)
+                .foregroundColor(.blue)
+                .frame(width: 200, height: 100)
+            
+            RoundedRectangle(cornerRadius: 12, style: .continuous)
+                .stroke(style: StrokeStyle(lineWidth: 4, lineCap: .round, lineJoin: .bevel, dash: [10]))
+                .foregroundColor(.blue)
+                .frame(width: 200, height: 100)
+            
+            Ellipse()
+                .stroke(style: StrokeStyle(lineWidth: 20, dash: [10, 5, 2], dashPhase: 10))
+                .foregroundColor(.orange)
+                .frame(width: 250, height: 100)
+            
+            
+            Ellipse()
+                .fill(Color.red)
+                .overlay(Ellipse().stroke(Color.blue, lineWidth: 4).frame(width: 50, height: 30))
+                .frame(width: 250, height: 100)
+        }
     }
 }
 
