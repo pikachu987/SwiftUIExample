@@ -8,30 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var selection = 2
+    @State private var foregroundColor: Color = Color.white
+    @State private var backgroundColor: Color = Color.black
     
     var body: some View {
-        TabView(selection: $selection) {
-            Text("First")
-                .tabItem {
-                    Image(systemName: "1.circle")
-                    Text("Screen One")
-                }
-                .tag(1)
-            Text("Second")
-                .tabItem {
-                    Image(systemName: "2.circle")
-                    Text("Screen Two")
-                }
-                .tag(2)
-            Text("Third")
-                .tabItem {
-                    Image(systemName: "3.circle")
-                    Text("Screen Three")
-                }
-                .tag(3)
-        }
-        .font(.largeTitle)
+        Text("Hello World")
+            .font(.largeTitle)
+            .padding()
+            .foregroundColor(foregroundColor)
+            .background(backgroundColor)
+            .contextMenu(ContextMenu(menuItems: {
+                Button(action: {
+                    self.foregroundColor = .black
+                    self.backgroundColor = .white
+                }, label: {
+                    Text("Normal Colors")
+                    Image(systemName: "paintbrush")
+                })
+                
+                Button(action: {
+                    self.foregroundColor = .white
+                    self.backgroundColor = .black
+                }, label: {
+                    Text("Inverted Colors")
+                    Image(systemName: "paintbrush.fill")
+                })
+            }))
     }
 }
 
