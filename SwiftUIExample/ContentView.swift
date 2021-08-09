@@ -8,31 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var carStore: CarStore = CarStore(cars: carData)
+    @State private var selection = 2
     
     var body: some View {
-        NavigationView {
-            List {
-                ForEach(carStore.cars) { car in
-                    ListCell(car: car)
+        TabView(selection: $selection) {
+            Text("First")
+                .tabItem {
+                    Image(systemName: "1.circle")
+                    Text("Screen One")
                 }
-                .onDelete(perform: { indexSet in
-                    carStore.cars.remove(atOffsets: indexSet)
-                })
-                .onMove(perform: { indices, newOffset in
-                    carStore.cars.move(fromOffsets: indices, toOffset: newOffset)
-                })
-            }
-            .listStyle(PlainListStyle())
-            .navigationBarTitle(Text("EV Cars"))
-            .navigationBarItems(leading: NavigationLink(
-                                    destination: AddNewCar(carStore: carStore),
-                                    label: {
-                                        Text("Add")
-                                            .foregroundColor(.blue)
-                                    }),
-                                trailing: EditButton())
+                .tag(1)
+            Text("Second")
+                .tabItem {
+                    Image(systemName: "2.circle")
+                    Text("Screen Two")
+                }
+                .tag(2)
+            Text("Third")
+                .tabItem {
+                    Image(systemName: "3.circle")
+                    Text("Screen Three")
+                }
+                .tag(3)
         }
+        .font(.largeTitle)
     }
 }
 
@@ -42,22 +41,6 @@ struct ContentView_Previews: PreviewProvider {
             ContentView()
                 .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
                 .previewDisplayName("iPhone 11")
-        }
-    }
-}
-
-struct ListCell: View {
-    var car: Car
-
-    var body: some View {
-        NavigationLink(destination: CarDetail(selectedCar: car)) {
-            HStack {
-                Image(car.imageName)
-                    .resizable()
-                    .aspectRatio(contentMode: .fit)
-                    .frame(width: 100, height: 60)
-                Text(car.name)
-            }
         }
     }
 }
