@@ -8,12 +8,26 @@
 import SwiftUI
 
 struct ContentView: View {
+    let colors = Gradient(colors: [.red, .yellow, .green, .blue, .purple])
     
     var body: some View {
         VStack {
+            Circle()
+                .fill(RadialGradient(gradient: colors, center: .center, startRadius: 0, endRadius: 130))
+                .frame(width: 140, height: 140)
+            
+            Circle()
+                .fill(AngularGradient(gradient: colors, center: .center))
+                .frame(width: 100, height: 100)
+            
+            Circle()
+                .fill(LinearGradient(gradient: colors, startPoint: .topLeading, endPoint: .bottomTrailing))
+                .frame(width: 100, height: 100)
+            
             MyShape()
-                .fill(Color.red)
-                .frame(width: 360, height: 350)
+                .fill(RadialGradient(gradient: colors, center: .center, startRadius: 0, endRadius: 100))
+                .frame(width: 100, height: 100)
+                .background(LinearGradient(gradient: Gradient(colors: [Color.red, Color.blue]), startPoint: .topLeading, endPoint: .bottomTrailing))
         }
     }
 }
