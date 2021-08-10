@@ -8,34 +8,22 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var rotation: Double = 0
-    @State private var scale: CGFloat = 1
+    @State private var visibility = false
     
     var body: some View {
         VStack {
-            Button(action: {
-                withAnimation(.linear(duration: 2)) {
-                    self.rotation = self.rotation < 360 ? self.rotation + 60 : 0
-                }
-                self.scale = self.scale < 2.8 ? self.scale + 0.3 : 1
-            }, label: {
-                Text("Button")
-                    .rotationEffect(.degrees(rotation))
-                    .scaleEffect(scale)
+            Toggle(isOn: $visibility.animation(.linear), label: {
+                Text("Toggle Text Views")
             })
+            .padding()
             
-            Spacer()
-            
-            Button(action: {
-                withAnimation(.linear(duration: 2)) {
-                    self.rotation = self.rotation < 360 ? self.rotation + 60 : 0
-                    self.scale = self.scale < 2.8 ? self.scale + 0.3 : 1
-                }
-            }, label: {
-                Text("Button")
-                    .rotationEffect(.degrees(rotation))
-                    .scaleEffect(scale)
-            })
+            if visibility {
+                Text("Hello World")
+                    .font(.largeTitle)
+            } else {
+                Text("Goodbye World")
+                    .font(.largeTitle)
+            }
         }
     }
 }
