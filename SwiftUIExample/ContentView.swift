@@ -22,9 +22,16 @@ struct ContentView: View {
                     Text("Example Button")
                 })
                 .font(.largeTitle)
-                .transition(.slide)
+//                .transition(.fadeAndMove)
+                .transition(.asymmetric(insertion: .scale, removal: .slide)) // 비대칭 전환
             }
         }
+    }
+}
+
+extension AnyTransition {
+    static var fadeAndMove: AnyTransition {
+        .opacity.combined(with: .move(edge: .top))
     }
 }
 
