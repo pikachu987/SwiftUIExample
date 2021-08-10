@@ -8,40 +8,57 @@
 import SwiftUI
 
 struct ContentView: View {
-    let colors = Gradient(colors: [.red, .yellow, .green, .blue, .purple])
+    @State private var rotation: Double = 0
+    @State private var scale: CGFloat = 1
     
     var body: some View {
         VStack {
-            Circle()
-                .fill(RadialGradient(gradient: colors, center: .center, startRadius: 0, endRadius: 130))
-                .frame(width: 140, height: 140)
+            Button(action: {
+                self.rotation = self.rotation < 360 ? self.rotation + 60 : 0
+                self.scale = self.scale < 2.8 ? self.scale + 0.3 : 1
+            }, label: {
+                Text("Click to animate")
+                    .scaleEffect(scale)
+                    .rotationEffect(.degrees(rotation))
+                    .animation(.linear)
+            })
             
-            Circle()
-                .fill(AngularGradient(gradient: colors, center: .center))
-                .frame(width: 100, height: 100)
+            Spacer()
             
-            Circle()
-                .fill(LinearGradient(gradient: colors, startPoint: .topLeading, endPoint: .bottomTrailing))
-                .frame(width: 100, height: 100)
+            Button(action: {
+                self.rotation = self.rotation < 360 ? self.rotation + 60 : 0
+                self.scale = self.scale < 2.8 ? self.scale + 0.3 : 1
+            }, label: {
+                Text("Click to animate")
+                    .scaleEffect(scale)
+                    .rotationEffect(.degrees(rotation))
+                    .animation(.spring(response: 1, dampingFraction: 0.2, blendDuration: 0))
+            })
             
-            MyShape()
-                .fill(RadialGradient(gradient: colors, center: .center, startRadius: 0, endRadius: 100))
-                .frame(width: 100, height: 100)
-                .background(LinearGradient(gradient: Gradient(colors: [Color.red, Color.blue]), startPoint: .topLeading, endPoint: .bottomTrailing))
+            Spacer()
+            
+            Button(action: {
+                self.rotation = self.rotation < 360 ? self.rotation + 60 : 0
+                self.scale = self.scale < 2.8 ? self.scale + 0.3 : 1
+            }, label: {
+                Text("Click to animate")
+                    .scaleEffect(scale)
+                    .rotationEffect(.degrees(rotation))
+                    .animation(.linear.repeatCount(10))
+            })
+            
+            Spacer()
+            
+            Button(action: {
+                self.rotation = self.rotation < 360 ? self.rotation + 60 : 0
+                self.scale = self.scale < 2.8 ? self.scale + 0.3 : 1
+            }, label: {
+                Text("Click to animate")
+                    .rotationEffect(.degrees(rotation))
+                    .animation(.spring(response: 1, dampingFraction: 0.2, blendDuration: 0))
+                    .scaleEffect(scale)
+            })
         }
-    }
-}
-
-struct MyShape: Shape {
-    func path(in rect: CGRect) -> Path {
-        var path = Path()
-        
-        path.move(to: .init(x: rect.minX, y: rect.minY))
-        path.addQuadCurve(to: .init(x: rect.minX, y: rect.maxY), control: .init(x: rect.midX, y: rect.midY))
-        path.addLine(to: .init(x: rect.minX, y: rect.maxY))
-        path.addLine(to: .init(x: rect.maxX, y: rect.maxY))
-        path.closeSubpath()
-        return path
     }
 }
 
