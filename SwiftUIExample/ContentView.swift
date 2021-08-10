@@ -14,48 +14,26 @@ struct ContentView: View {
     var body: some View {
         VStack {
             Button(action: {
-                self.rotation = self.rotation < 360 ? self.rotation + 60 : 0
+                withAnimation(.linear(duration: 2)) {
+                    self.rotation = self.rotation < 360 ? self.rotation + 60 : 0
+                }
                 self.scale = self.scale < 2.8 ? self.scale + 0.3 : 1
             }, label: {
-                Text("Click to animate")
-                    .scaleEffect(scale)
+                Text("Button")
                     .rotationEffect(.degrees(rotation))
-                    .animation(.linear)
+                    .scaleEffect(scale)
             })
             
             Spacer()
             
             Button(action: {
-                self.rotation = self.rotation < 360 ? self.rotation + 60 : 0
-                self.scale = self.scale < 2.8 ? self.scale + 0.3 : 1
+                withAnimation(.linear(duration: 2)) {
+                    self.rotation = self.rotation < 360 ? self.rotation + 60 : 0
+                    self.scale = self.scale < 2.8 ? self.scale + 0.3 : 1
+                }
             }, label: {
-                Text("Click to animate")
-                    .scaleEffect(scale)
+                Text("Button")
                     .rotationEffect(.degrees(rotation))
-                    .animation(.spring(response: 1, dampingFraction: 0.2, blendDuration: 0))
-            })
-            
-            Spacer()
-            
-            Button(action: {
-                self.rotation = self.rotation < 360 ? self.rotation + 60 : 0
-                self.scale = self.scale < 2.8 ? self.scale + 0.3 : 1
-            }, label: {
-                Text("Click to animate")
-                    .scaleEffect(scale)
-                    .rotationEffect(.degrees(rotation))
-                    .animation(.linear.repeatCount(10))
-            })
-            
-            Spacer()
-            
-            Button(action: {
-                self.rotation = self.rotation < 360 ? self.rotation + 60 : 0
-                self.scale = self.scale < 2.8 ? self.scale + 0.3 : 1
-            }, label: {
-                Text("Click to animate")
-                    .rotationEffect(.degrees(rotation))
-                    .animation(.spring(response: 1, dampingFraction: 0.2, blendDuration: 0))
                     .scaleEffect(scale)
             })
         }
