@@ -8,32 +8,53 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var isButtonVisible: Bool = true
-    
     var body: some View {
         VStack {
-            Toggle(isOn: $isButtonVisible.animation(.linear(duration: 1)), label: {
-                Text("Show/Hide Button")
-            })
-            .padding()
+            Image(systemName: "hand.point.right.fill")
+                .frame(width: 80, height: 80)
+                .gesture(
+                    TapGesture()
+                        .onEnded { _ in
+                            print("Tapped")
+                        }
+                )
             
-            if isButtonVisible {
-                Button(action: {}, label: {
-                    Text("Example Button")
-                })
-                .font(.largeTitle)
-//                .transition(.fadeAndMove)
-                .transition(.asymmetric(insertion: .scale, removal: .slide)) // 비대칭 전환
-            }
+            Spacer()
+            
+            Image(systemName: "hand.point.right.fill")
+                .frame(width: 80, height: 80)
+                .gesture(
+                    TapGesture(count: 2)
+                        .onEnded { _ in
+                            print("Double Tapped")
+                        }
+                )
+            
+            Spacer()
+            
+            Image(systemName: "hand.point.right.fill")
+                .frame(width: 80, height: 80)
+                .gesture(
+                    LongPressGesture()
+                        .onEnded { _ in
+                            print("Long Press")
+                        }
+                )
+            
+            Spacer()
+            
+            Image(systemName: "hand.point.right.fill")
+                .frame(width: 80, height: 80)
+                .gesture(
+                    LongPressGesture(minimumDuration: 10, maximumDistance: 25)
+                        .onEnded { _ in
+                            print("Long Press Duration")
+                        }
+                )
         }
     }
 }
 
-extension AnyTransition {
-    static var fadeAndMove: AnyTransition {
-        .opacity.combined(with: .move(edge: .top))
-    }
-}
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
