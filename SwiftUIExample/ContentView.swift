@@ -8,22 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var visibility = false
+    @State private var isSpinning: Bool = true
     
     var body: some View {
         VStack {
-            Toggle(isOn: $visibility.animation(.linear), label: {
-                Text("Toggle Text Views")
-            })
-            .padding()
-            
-            if visibility {
-                Text("Hello World")
+            ZStack {
+                Circle()
+                    .stroke(lineWidth: 2)
+                    .foregroundColor(.blue)
+                    .frame(width: 360, height: 360)
+                
+                Image(systemName: "forward.fill")
                     .font(.largeTitle)
-            } else {
-                Text("Goodbye World")
-                    .font(.largeTitle)
+                    .offset(y: -180)
+                    .rotationEffect(.degrees(isSpinning ? 0 : 360))
+                    .animation(.linear(duration: 5).repeatForever(autoreverses: false))
             }
+            .onAppear(perform: {
+                self.isSpinning.toggle()
+            })
         }
     }
 }
