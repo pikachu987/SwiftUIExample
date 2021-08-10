@@ -8,49 +8,25 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var magnification: CGFloat = 1
+    
     var body: some View {
         VStack {
-            Image(systemName: "hand.point.right.fill")
-                .frame(width: 80, height: 80)
-                .gesture(
-                    TapGesture()
-                        .onEnded { _ in
-                            print("Tapped")
-                        }
-                )
-            
-            Spacer()
+            let magnificationGesture = MagnificationGesture(minimumScaleDelta: 0)
+                .onChanged { value in
+                    print("Gesture Changed")
+                    self.magnification = value
+                }
+                .onEnded { _ in
+                    print("Gesture Ended")
+                }
             
             Image(systemName: "hand.point.right.fill")
-                .frame(width: 80, height: 80)
-                .gesture(
-                    TapGesture(count: 2)
-                        .onEnded { _ in
-                            print("Double Tapped")
-                        }
-                )
-            
-            Spacer()
-            
-            Image(systemName: "hand.point.right.fill")
-                .frame(width: 80, height: 80)
-                .gesture(
-                    LongPressGesture()
-                        .onEnded { _ in
-                            print("Long Press")
-                        }
-                )
-            
-            Spacer()
-            
-            Image(systemName: "hand.point.right.fill")
-                .frame(width: 80, height: 80)
-                .gesture(
-                    LongPressGesture(minimumDuration: 10, maximumDistance: 25)
-                        .onEnded { _ in
-                            print("Long Press Duration")
-                        }
-                )
+                .resizable()
+                .font(.largeTitle)
+                .scaleEffect(magnification)
+                .gesture(magnificationGesture)
+                .frame(width: 100, height: 100)
         }
     }
 }
