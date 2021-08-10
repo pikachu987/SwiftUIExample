@@ -8,25 +8,19 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var magnification: CGFloat = 1
+    @GestureState private var offset: CGSize = .zero
     
     var body: some View {
         VStack {
-            let magnificationGesture = MagnificationGesture(minimumScaleDelta: 0)
-                .onChanged { value in
-                    print("Gesture Changed")
-                    self.magnification = value
-                }
-                .onEnded { _ in
-                    print("Gesture Ended")
+            let drag = DragGesture()
+                .updating($offset) { dragValue, state, transaction in
+                    state = dragValue.translation
                 }
             
             Image(systemName: "hand.point.right.fill")
-                .resizable()
                 .font(.largeTitle)
-                .scaleEffect(magnification)
-                .gesture(magnificationGesture)
-                .frame(width: 100, height: 100)
+                .offset(offset)
+                .gesture(drag)
         }
     }
 }
