@@ -8,10 +8,27 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State var imagePickerVisible: Bool = false
+    @State var selectedImage: Image? = Image(systemName: "photo")
     
     var body: some View {
-        VStack {
-            MyScrollView(text: "Hello World")
+        ZStack {
+            selectedImage?
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+            
+            Button(action: {
+                withAnimation {
+                    self.imagePickerVisible.toggle()
+                }
+            }, label: {
+                Text("Select an Image")
+            })
+            .padding()
+            
+            if imagePickerVisible {
+                MyImagePicker(imagePickerVisible: $imagePickerVisible, selectedImage: $selectedImage)
+            }
         }
     }
 }
@@ -26,41 +43,47 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct MyScrollView: UIViewRepresentable {
-    var text: String
-    
-    func makeUIView(context: Context) -> some UIScrollView {
-        let scrollView = UIScrollView()
-        scrollView.delegate = context.coordinator
-        scrollView.refreshControl = UIRefreshControl()
-        scrollView.refreshControl?.addTarget(context.coordinator, action: #selector(Coordinator.handleRefresh(_:)), for: .valueChanged)
-        let label = UILabel(frame: .init(x: 0, y: 0, width: 300, height: 50))
-        label.text = text
-        scrollView.addSubview(label)
-        return scrollView
+struct MyImagePicker: UIViewControllerRepresentable {
+    @Binding var imagePickerVisible: Bool
+    @Binding var selectedImage: Image?
+
+    func makeUIViewController(context: Context) -> some UIViewController {
+        let picker = UIImagePickerController()
+        picker.delegate = context.coordinator
+        return picker
     }
     
-    func updateUIView(_ uiView: UIViewType, context: Context) {
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
         
     }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(control: self)
+        return Coordinator(imagePickerVisible: $imagePickerVisible, selectedImage: $selectedImage)
     }
     
-    class Coordinator: NSObject, UIScrollViewDelegate {
-        var control: MyScrollView
+    class Coordinator: NSObject, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+        @Binding var imagePickerVisible: Bool
+        @Binding var selectedImage: Image?
         
-        init(control: MyScrollView) {
-            self.control = control
+        init(imagePickerVisible: Binding<Bool>, selectedImage: Binding<Image?>) {
+            _imagePickerVisible = imagePickerVisible
+            _selectedImage = selectedImage
         }
         
-        func scrollViewDidScroll(_ scrollView: UIScrollView) {
-            
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+            selectedImage = Image(uiImage: image)
+            imagePickerVisible = false
         }
         
-        @objc func handleRefresh(_ sender: UIRefreshControl) {
-            sender.endRefreshing()
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            imagePickerVisible = false
         }
     }
 }
+
+//struct MyImagePicker_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MyImagePicker()
+//    }
+//}
