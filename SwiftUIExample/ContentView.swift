@@ -8,38 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
-    @GestureState private var offset: CGSize = .zero
-    @State private var dragEnabled: Bool = false
     
     var body: some View {
         VStack {
-            let longPressBeforeDrag = LongPressGesture(minimumDuration: 2.0)
-                .onEnded({ _ in
-                    self.dragEnabled = true
-                })
-                .sequenced(before: DragGesture())
-                .updating($offset) { value, state, transition in
-                    switch value {
-                    case .first(true):
-                        print("Long Press in progress")
-                    case .second(true, let drag):
-                        state = drag?.translation ?? .zero
-                    default: break
-                    }
-                }
-                .onEnded { value in
-                    self.dragEnabled = false
-                }
-            
-            Image(systemName: "hand.point.right.fill")
-                .foregroundColor(dragEnabled ? .red : .blue)
-                .font(.largeTitle)
-                .offset(offset)
-                .gesture(longPressBeforeDrag)
+            MyUILabel(text: "Hello world")
         }
     }
 }
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
@@ -48,5 +23,19 @@ struct ContentView_Previews: PreviewProvider {
                 .previewDevice(PreviewDevice(rawValue: "iPhone 11"))
                 .previewDisplayName("iPhone 11")
         }
+    }
+}
+
+struct MyUILabel: UIViewRepresentable {
+    var text: String
+    
+    func makeUIView(context: Context) -> some UILabel {
+        let label = UILabel()
+        label.text = text
+        return label
+    }
+    
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+        
     }
 }
